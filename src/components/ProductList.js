@@ -1,7 +1,8 @@
 import React from "react";
 import Header from "./Header";
-import { Product } from "./Product";
 import { storeAPI } from '../rest/StoreAPI'
+import { Review } from "./Review";
+import { Container } from "./Container";
 
 
 
@@ -20,8 +21,8 @@ export class ProductList extends React.Component {
         this.setState({ products });
     };
 
-    updateProduct = async (product) => {
-        await storeAPI.delete(product);
+    updateProduct = async (updatedProduct) => {
+        await storeAPI.delete(updatedProduct);
         this.state.productChanged = true;
         this.fetchProducts();
     };
@@ -32,19 +33,11 @@ export class ProductList extends React.Component {
                 <div>
                     <Header/>
                 </div>
-                <div>
-                    
-                </div>
                 <br/>
                 <div className="card">
-                    {this.state.products.map((product) => (
-                        <Product
-                        product={product}
-                        key={product.product}
-                        updateProduct={this.updateProduct}
-                        />
-                    ))}
+                   <Container />
                 </div>
+                <br/>
             </div>
         )
     }     
