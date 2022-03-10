@@ -1,30 +1,40 @@
 import React, { useState } from "react";
 
 export const NewReviewForm = (props) => {
-    const [review, setReview] = useState('');
+    const [main, setMain] = useState('');
+    const [date, setDate] = useState('');
 
     const onSubmit = (e) => {
         e.preventDefault();
-        if(review) {
-            props.addNewReview({review});
-            setReview('');
-        }else {
-            console.log('invalid review');
+        if (main && date) {
+           props.addNewReview({main, date}); 
+           setMain('');
+           setDate('');
+        }else{
+            console.log('invalid submit')
         }
-    }
+    };
 
-    return(
+
+    return (
         <div>
-            <h2>Add a new review</h2>
+            <h4>Add new review</h4>
             <form onSubmit={onSubmit}>
                 <input
                     type='text'
-                    key={review.id}
-                    placeholder='Enter review'
-                    onChange={(e) => setReview(e.target.value)}
+                    placeholder='main'
+                    onChange={(e) => setMain(e.target.value)}
+                    value={main}
+                    />
+                <input
+                    type='text'
+                    placeholder='date'
+                    onChange={(e) => setDate(e.target.value)}
+                    value={date}
                 />
-                <button type="submit">Post review</button>
+               <button type="submit">Add Review</button> 
             </form>
         </div>
-    )
-} 
+    );
+    
+}

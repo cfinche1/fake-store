@@ -1,19 +1,19 @@
-const StoreEndpoint = "https://621d4042806a09850a561672.mockapi.io/products/";
+const SHOP_ENDPOINT = "https://621d4042806a09850a561672.mockapi.io/products/";
 
-class StoreAPI {
+class CynSHOP {
     get = async () => {
         try{
-            const resp = await fetch(StoreEndpoint);
+            const resp = await fetch(SHOP_ENDPOINT);
             const data = await resp.json();
             return data;
         } catch (e) {
-            console.log('The necklace broke!', e);
+            console.log('Get is not working!', e);
         }
     }
 
     put = async (product) => {
         try{
-            const resp = await fetch(`${StoreEndpoint}/${product.product}`, {
+            const resp = await fetch(`${SHOP_ENDPOINT}/${product.id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -22,13 +22,13 @@ class StoreAPI {
             });
             return await resp.json();
         }catch(e) {
-            console.log('The ring is lost!', e);
+            console.log('Put is not working!', e);
         }
     }
 
     post = async (product) => {
         try{
-            const resp = await fetch(`${StoreEndpoint}`, {
+            const resp = await fetch(`${SHOP_ENDPOINT}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -37,13 +37,13 @@ class StoreAPI {
             });
             return await resp.json()
         }catch(e) {
-            console.log('You have lost an earring.', e);
+            console.log('Post is not working.', e);
         }
     }
 
     delete = async (product) => {
         try{
-            const resp = await fetch(`${StoreEndpoint}/${product.product}`,{
+            const resp = await fetch(`${SHOP_ENDPOINT}/${product.id}`,{
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'
@@ -56,4 +56,4 @@ class StoreAPI {
     }
 }
 
-export const storeAPI = new StoreAPI();
+export const cynSHOP = new CynSHOP();

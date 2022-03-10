@@ -1,10 +1,8 @@
 import React from "react";
+import { Product } from './Product';
+import { cynSHOP } from "../rest/CynSHOP";
+import { NewProductForm } from './NewProductForm';
 import Header from "./Header";
-import { storeAPI } from '../rest/StoreAPI'
-import { Review } from "./Review";
-import { Container } from "./Container";
-
-
 
 export class ProductList extends React.Component {
     state = {
@@ -17,28 +15,48 @@ export class ProductList extends React.Component {
     };
 
     fetchProducts = async () => {
-        const products = await storeAPI.get();
+        const products = await cynSHOP.get();
         this.setState({ products });
     };
 
-    updateProduct = async (updatedProduct) => {
-        await storeAPI.delete(updatedProduct);
+    createProduct = async (product) => {
+        await cynSHOP.post(product);
         this.state.productChanged = true;
+        this.fetchProducts();
+    }
+
+    updateProduct = async (updatedProduct) => {
+        await cynSHOP.put(updatedProduct);
         this.fetchProducts();
     };
 
+    deleteProduct = async (product) => {
+        await cynSHOP.delete(product);
+        this.state.productChanged = true;
+        this.fetchProducts();
+    }
+
     render() {
-        return(
+        return (
             <div>
                 <div>
-                    <Header/>
+                    <Header />
                 </div>
-                <br/>
-                <div className="card">
-                   <Container />
+                <div className="products">
+                    <NewProductForm createNewProduct={this.createProduct} />   
                 </div>
-                <br/>
+                <div className="product-list">
+                    {this.state.products.map((product) => (
+                        <Product
+                        product={product}
+                        key={product.product}
+                        updateProduct={this.updateProduct}
+                        deleteProduct={this.deleteProduct}
+                        />
+                ))}
+                </div>
             </div>
+           
         )
-    }     
+    }
 }

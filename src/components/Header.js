@@ -1,7 +1,14 @@
-import React from "react";
+import React from "react"
+import {  } from "react-bootstrap"
 
-export default class Header extends React.Component {
-    render() {
-        return <h1>Welcome to Cyn-SHOP</h1>
-    }
-}
+function Header() {
+    return(
+        <div>
+            <h1>CYN-SHOP</h1>
+        </div>
+      
+    )
+   
+} 
+
+export default Header;
