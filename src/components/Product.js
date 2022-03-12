@@ -1,5 +1,8 @@
 import React from "react";
-import { NewReviewForm } from './NewReviewForm';
+import { Nav } from "react-bootstrap";
+import { NavLink } from "react-bootstrap";
+import { BrowserRouter as Route, Switch } from "react-router-dom";
+import { NewReviewForm } from './NewReviewForm'
 
 export const Product = (props) => {
     const { product, updateProduct } = props;
@@ -31,16 +34,15 @@ export const Product = (props) => {
             ))}
         </ul>
     );
-
+//brand new component that will house necklace data... but start with blank component first
     return (
-        <div>
-            <h1>{product.title}<br/>
-                <button onClick={deleteProduct}>Delete Product</button>
-            </h1>
+        <div className="product">
+             <h1>{product.title}</h1><br/>
+            <button onClick={deleteProduct}>Delete</button>
             {
                 reviews({ reviews, productId: product._id, deleteReview})
             }
-            <NewReviewForm addNewReview={addNewReview} />
+             <NewReviewForm addNewReview={addNewReview} />
         </div>
     );
 };

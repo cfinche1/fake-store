@@ -1,8 +1,8 @@
 import React from "react";
 import { Product } from './Product';
 import { cynSHOP } from "../rest/CynSHOP";
-import { NewProductForm } from './NewProductForm';
-import Header from "./Header";
+// import { NewProductForm } from './NewProductForm';
+// import Navigate from "./Navigate";
 
 export class ProductList extends React.Component {
     state = {
@@ -39,12 +39,6 @@ export class ProductList extends React.Component {
     render() {
         return (
             <div>
-                <div>
-                    <Header />
-                </div>
-                <div className="products">
-                    <NewProductForm createNewProduct={this.createProduct} />   
-                </div>
                 <div className="product-list">
                     {this.state.products.map((product) => (
                         <Product

@@ -1,14 +1,9 @@
-import React from "react"
-import {  } from "react-bootstrap"
+import React from "react";
 
-function Header() {
+const Header = () => {
     return(
-        <div>
-            <h1>CYN-SHOP</h1>
-        </div>
-      
+        <h1>WELCOME TO CYN-SHOP</h1>
     )
-   
-} 
+}
 
 export default Header;

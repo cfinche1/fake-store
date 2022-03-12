@@ -1,14 +1,15 @@
 import React, { Component } from "react";
-import { ProductList } from "./components/ProductList";
+import Navigate from "./components/Navigate";
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <ProductList/>
-      </div>
+      <React.Fragment>
+        <Navigate/>
+      </React.Fragment>
     )
   }
 }
+
 
 export default App;
