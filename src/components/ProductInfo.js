@@ -1,17 +1,13 @@
 import React from "react";
-import { Product } from "./Product";
+import { Card } from "react-bootstrap";
 
-export const ProductInfo = () => {
+export const ProductInfo = (props) => {
+    
     return(
-        <div className="product-list">
-            {this.state.products.map((product) => (
-                <Product 
-                product={product}
-                key={product.product}
-                updateProduct={this.updateProduct}
-                deleteProduct={this.deleteProduct}
-                />
-            ))}
-        </div>
-    );
-};
+        <Card className="info">
+            <h1>{props.product.title}</h1>
+            <h3>{props.product.price}</h3>
+            <h3>{props.product.description}</h3>
+        </Card>
+    )
+}

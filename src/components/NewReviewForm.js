@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { PostButton } from "./PostButton";
 
 export const NewReviewForm = (props) => {
     const [main, setMain] = useState('');
@@ -17,7 +18,7 @@ export const NewReviewForm = (props) => {
 
 
     return (
-        <div>
+        <div className="review-form">
             <h4>Add new review</h4>
             <form onSubmit={onSubmit}>
                 <input
@@ -25,14 +26,14 @@ export const NewReviewForm = (props) => {
                     placeholder='main'
                     onChange={(e) => setMain(e.target.value)}
                     value={main}
-                    />
+                    /><br/><br/>
                 <input
                     type='text'
                     placeholder='date'
                     onChange={(e) => setDate(e.target.value)}
                     value={date}
-                />
-               <button type="submit">Add Review</button> 
+                /><br/><br/>
+               <PostButton type="submit"/> 
             </form>
         </div>
     );

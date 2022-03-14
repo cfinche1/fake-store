@@ -1,8 +1,7 @@
 import React from "react";
-import { Nav } from "react-bootstrap";
-import { NavLink } from "react-bootstrap";
-import { BrowserRouter as Route, Switch } from "react-router-dom";
 import { NewReviewForm } from './NewReviewForm'
+import { ProductInfo } from "./ProductInfo";
+import { DeleteButton } from "./DeleteButton";
 
 export const Product = (props) => {
     const { product, updateProduct } = props;
@@ -29,7 +28,7 @@ export const Product = (props) => {
                 <ul key={index}>
                     <label>{`Review comment: ${review.main}`}</label><br/>
                     <label>{`Date: ${review.date}`}</label><br/>
-                    <button onClick={(e) => deleteReview(review)}>Delete</button>
+                    <DeleteButton onClick={(e) => deleteReview(review)}/>
                 </ul>
             ))}
         </ul>
@@ -37,12 +36,20 @@ export const Product = (props) => {
 //brand new component that will house necklace data... but start with blank component first
     return (
         <div className="product">
-             <h1>{product.title}</h1><br/>
-            <button onClick={deleteProduct}>Delete</button>
-            {
+            <div className="item">
+                <ProductInfo product={product}/>
+            </div>
+            <DeleteButton onClick={deleteProduct}/>
+            <br/><br/>
+            <div className="add-review">
+                <NewReviewForm addNewReview={addNewReview} />
+            </div>
+            <br/>
+            <div className="reviews">
+                {
                 reviews({ reviews, productId: product._id, deleteReview})
-            }
-             <NewReviewForm addNewReview={addNewReview} />
+                }
+            </div>
         </div>
     );
 };

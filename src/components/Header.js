@@ -2,7 +2,10 @@ import React from "react";
 
 const Header = () => {
     return(
-        <h1>WELCOME TO CYN-SHOP</h1>
+        <div className="header">
+            <h1>WELCOME TO CYN-SHOP</h1>
+        </div>
+        
     )
 }
 

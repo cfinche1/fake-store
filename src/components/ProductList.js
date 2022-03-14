@@ -1,6 +1,7 @@
 import React from "react";
 import { Product } from './Product';
 import { cynSHOP } from "../rest/CynSHOP";
+import { Card } from "react-bootstrap";
 // import { NewProductForm } from './NewProductForm';
 // import Navigate from "./Navigate";
 
@@ -19,11 +20,6 @@ export class ProductList extends React.Component {
         this.setState({ products });
     };
 
-    createProduct = async (product) => {
-        await cynSHOP.post(product);
-        this.state.productChanged = true;
-        this.fetchProducts();
-    }
 
     updateProduct = async (updatedProduct) => {
         await cynSHOP.put(updatedProduct);
@@ -36,9 +32,10 @@ export class ProductList extends React.Component {
         this.fetchProducts();
     }
 
+
     render() {
         return (
-            <div>
+            <Card>
                 <div className="product-list">
                     {this.state.products.map((product) => (
                         <Product
@@ -46,10 +43,11 @@ export class ProductList extends React.Component {
                         key={product.product}
                         updateProduct={this.updateProduct}
                         deleteProduct={this.deleteProduct}
+                        productChanged={this.productChanged}
                         />
-                ))}
+                    ))}
                 </div>
-            </div>
+            </Card>
            
         )
     }

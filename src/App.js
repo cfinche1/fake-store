@@ -4,9 +4,12 @@ import Navigate from "./components/Navigate";
 class App extends Component {
   render() {
     return (
-      <React.Fragment>
-        <Navigate/>
-      </React.Fragment>
+      <div className="main">
+        <React.Fragment>
+          <Navigate/>
+        </React.Fragment>
+      </div>
+      
     )
   }
 }
